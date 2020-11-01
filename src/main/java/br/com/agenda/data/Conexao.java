@@ -11,6 +11,6 @@ public interface Conexao {
 	
 	void commit() throws SQLException;
 	
-	void rollbacku();
+	void rollback();
 	
 }
