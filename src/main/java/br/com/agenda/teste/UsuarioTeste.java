@@ -8,11 +8,17 @@ public class UsuarioTeste {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
+		/*
+		 * UsuarioDAO dao = new UsuarioDAO();
+		 * 
+		 * dao.inserir("leon");
+		 * 
+		 */
+		
 		UsuarioDAO dao = new UsuarioDAO();
+		dao.listarTudo();
 		
-		dao.inserir("leon");
-		
-
+		System.out.println(dao.listarTudo());
 	}
 
 }

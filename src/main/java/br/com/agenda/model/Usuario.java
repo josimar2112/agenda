@@ -5,6 +5,11 @@ public class Usuario {
 	private Long id;
 	private String nome;
 
+	public Usuario(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -21,4 +26,10 @@ public class Usuario {
 		this.nome = nome;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + "]";
+	}
+
+	
 }
