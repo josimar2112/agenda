@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+
 import br.com.agenda.data.Conexao;
 import br.com.agenda.data.ConexaoMySql;
 import br.com.agenda.model.Local;
@@ -19,6 +21,7 @@ public class LocalDAO {
 		this.conexao = new ConexaoMySql();
 	}
 
+	// classe created
 	public void inserir(String nomeLocal) throws SQLException {
 		String sqlQuery = "insert into local(nome)values (?);";
 
@@ -35,6 +38,7 @@ public class LocalDAO {
 
 	}
 
+	// classe read
 	public List<Local> listarTudo() throws SQLException, ClassNotFoundException {
 		String sql = "Select id, nome FROM local order by id";
 
@@ -53,5 +57,36 @@ public class LocalDAO {
 		} catch (SQLException exception) {
 			throw exception;
 		}
+	}
+
+	public void alterar(String nomeAtualizado, int i) throws SQLException {
+		String sql = "update local set nome = ? where id = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sql);
+			stmt.setString(1, nomeAtualizado);
+			stmt.setLong(2, i);
+			stmt.execute();
+
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+	}
+
+	public void excluir(int i) throws SQLException {
+		String excluir = "delete from local where id = ?; ";
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(excluir);
+			stmt.setLong(1, i);
+			stmt.execute();
+
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+
 	}
 }

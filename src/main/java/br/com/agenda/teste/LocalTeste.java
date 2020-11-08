@@ -18,6 +18,15 @@ public class LocalTeste {
 		dao.listarTudo();
 		
 		System.out.println(dao.listarTudo());
+		
+		/*
+		
+		LocalDAO daoUpdate = new LocalDAO();
+		daoUpdate.alterar("Cooper a nossa Cooperativa", 2);
+		
+		LocalDAO del = new LocalDAO();
+		del.excluir(5);
+			*/	
 	}
 
 }

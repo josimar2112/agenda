@@ -12,6 +12,7 @@ import br.com.agenda.model.Usuario;
 
 public class UsuarioDAO {
 
+	
 	private final Conexao conexao;
 
 	public UsuarioDAO() throws SQLException, ClassNotFoundException {
@@ -54,6 +55,40 @@ public class UsuarioDAO {
 			throw exception;
 		}
 	}
+
+	
+	public void alterar(String nomeAtualizado, int i) throws SQLException {
+		String sql = "update usuario set nome = ? where id = ?";
+
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(sql);
+			stmt.setString(1, nomeAtualizado);
+			stmt.setLong(2, i);
+			stmt.execute();
+
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+	}
+
+	public void excluir(int i) throws SQLException {
+		String excluir = "delete from usuario where id = ?; ";
+		try {
+			PreparedStatement stmt = this.conexao.getConnection().prepareStatement(excluir);
+			stmt.setLong(1, i);
+			stmt.execute();
+
+			this.conexao.commit();
+		} catch (SQLException e) {
+			this.conexao.rollback();
+			throw e;
+		}
+
+	}
 }
+
+
 
 

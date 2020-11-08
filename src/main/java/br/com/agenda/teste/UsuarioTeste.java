@@ -19,6 +19,14 @@ public class UsuarioTeste {
 		dao.listarTudo();
 		
 		System.out.println(dao.listarTudo());
+		
+		//UsuarioDAO daoUpdate = new UsuarioDAO();
+		//daoUpdate.alterar("Leon Maximos", 5);
+		
+		UsuarioDAO del = new UsuarioDAO();
+		del.excluir(5);
+		
+		
 	}
 
 }
